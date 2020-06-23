@@ -1,0 +1,11 @@
+// _mobile.scss
+
+.iphone{
+    #section-start-grid .grid-container .grid-item:after{
+        display: none;
+    }
+
+    #section-main-nav .main-nav-container #main-nav .nav-items li .btn-main-nav.btn:hover{
+    	background: #202020 !important;
+    }
+}

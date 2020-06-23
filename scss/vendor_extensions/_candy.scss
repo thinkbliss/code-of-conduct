@@ -1,0 +1,25 @@
+
+
+.switch-toggle{
+	&.switch-candy{
+		background-color: #f8f8f8;
+	    border-radius: 30px;
+        box-shadow: none;
+		border: 1px solid #c4c4c4;
+
+	    label{
+	    	color: rgba(0,0,0, .5);
+	    	text-shadow: none;
+	    }
+	}
+}
+
+.switch-candy{
+
+	a{
+		border: 1px solid #c4c4c4;
+	    border-radius: 50%;
+	    box-shadow: none;
+	    background-color: #fff;
+	}
+}

@@ -1,0 +1,352 @@
+// _start.scss
+
+/* start */
+
+
+
+#section-start-container{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 1600px;
+    margin: auto;
+
+    > .container-fluid{
+        background-color: #ffccff;
+    }
+
+    > .section-area{
+        height: 100vh;
+
+    }
+}
+
+
+.slider-container{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transition: left .5s;
+
+    @include mq ($from: medium) {
+        transition: left .7s;
+    }
+
+    &.show{
+        left: -100%;
+        #section-start-grid .grid-container{
+            display: block;
+        }
+    }
+}
+
+
+#section-start{
+
+    .table{
+        display: table;
+        width: 100%;
+        @include mq ($from: xsmall, $until: medium){
+            display: block;
+        }
+    }
+    .container-fluid{
+        // background-image: url(../images/start-background.jpg);
+        // background-repeat: no-repeat;
+        // background-size: cover;
+
+        z-index: 2;
+
+    }
+    .section-area{
+        display: table-cell;
+        height: 100vh;
+        // min-height: $grid-min-height;
+        padding-top: initial;
+        padding-bottom: initial;
+        @include mq ($from: xsmall, $until: medium){
+            display: block;
+            > .row{
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                padding-bottom: 50px;
+            }
+
+        }
+
+        @include mq ($from: medium){
+            vertical-align: middle;
+            min-height: $grid-min-height;
+        }
+    }
+}
+
+#section-start-grid{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    // background-color: #fff;
+    top: 0;
+    left: 100%;
+    max-width: 1600px;
+
+
+    .logo-container{
+        // color: #444;
+        color: #808080;
+        @include mq ($from: xsmall, $until: medium) {
+            padding-left: 0;
+        }
+
+        img{
+            // width: 212px;
+            // display: inline-block;
+            // vertical-align: middle;
+        }
+        span{
+            // display: inline-block;
+            // vertical-align: middle;
+        }
+        .separator{
+            // margin-left: 10px;
+            // margin-right: 10px;
+        }
+        .tagline{
+            // margin-top: 2px;
+        }
+    }
+
+
+    .section-area{
+        // height: 100vh;
+        padding: 0;
+    }
+
+    .grid-container{
+        height: calc(100vh - 60px);
+        // min-height: $grid-min-height;
+
+        @include mq ($until: medium) {
+            display: none;
+        }
+
+
+        @include mq ($from: medium){
+            // min-height: $grid-min-height;
+        }
+
+
+        > .row{
+            height: 100%;
+            margin: 0!important;
+            // min-height: 700px;
+        }
+
+
+
+        .grid-item{
+            padding: 0;
+
+            .background-container{
+                transition: transform .5s;
+                -webkit-transition: transform .5s;
+            }
+
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                opacity: .25;
+                -webkit-opacity: .25;
+                top: 0;
+                transition: opacity .5s;
+                -webkit-transition: opacity .5s;
+            }
+
+            &:hover{
+                .background-container{
+
+                    transform: scale(1.1);
+                    -webkit-transform: scale(1.1)
+                }
+
+                &:after{
+                    opacity: 0;
+                    -webkit-opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+
+.grid-item{
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    overflow: hidden;
+    padding: 0;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+
+    a{
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        letter-spacing: normal;
+        z-index: 1;
+    }
+
+    .grid-text {
+        font-size: 1.75em;
+        font-weight: 300;
+        color: #ffffff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+
+        span{
+            display: block;
+        }
+        @include mq ($from: xsmall, $until: medium) {
+            font-size: 1.375em;
+        }
+    }
+
+    .background-container{
+        // position: absolute;
+        min-height: 100%;
+        min-width: 100%;
+        background-size: cover;
+        background-position: center;
+        // transition: .5s;
+        // height: 100vh;
+        @include mq ($from: xsmall, $until: medium) {
+            //min-height: 40%;
+            padding: 90px 0;
+        }
+    }
+
+    &:nth-child(2), &:nth-child(5), &:nth-child(8){
+        // border-right: 1px solid #fff;
+    }
+
+    &:nth-child(1), &:nth-child(3), &:nth-child(6){
+        border-left: 0;
+        @include mq ($from: xsmall, $until: medium) {
+            border-left: 1px solid #ffffff;
+        }
+    }
+
+
+    &.ceo {
+        .background-container{
+            background-image: url(../images/grid-item-ceo.jpg);
+            background-position: left center;
+            @include mq ($from: xsmall, $until: medium) {
+                background-image: url(../images/grid-item-ceo-mobile.jpg);
+            }
+        }
+        .grid-text {
+            font-size: 1em;
+            width: 50%;
+            left: 70%;
+            transform: translate(-60%, -50%);
+            text-align: left;
+            @include mq ($from: medium, $until: large) {
+                width: 65%;
+                left: 75%;
+                transform: translate(-75%, -50%);
+    		}
+            @include mq ($from: xsmall, $until: medium) {
+                width: 100%;
+                left: initial;
+                transform: translate(0, -50%);
+                text-align: center;
+            }
+            .quoted {
+                font-size: 1.5em;
+                font-style: italic;
+                font-weight: 100;
+                line-height: 1.2;
+                @include mq ($from: medium, $until: large) {
+                    font-size: 1.3em;
+        		}
+                @include mq ($from: xsmall, $until: medium) {
+                    display: none;
+                }
+            }
+            .cta {
+                margin-top: 28px;
+                background: transparent url(../images/icons/icon-btn-arrow-white.png) no-repeat 180px center;
+                background-size: 8px;
+                font-weight: 400;
+                @include mq ($from: xsmall, $until: medium) {
+                    background: none;
+                    font-size: 1.500em;
+                    font-weight: 300;
+                }
+
+                @include mq ($from: xxlarge) {
+                    background: transparent url(../images/icons/icon-btn-arrow-white.png) no-repeat 203px center;
+                    background-size: 8px;
+                }
+            }
+        }
+    }
+    &.core {
+        .background-container{
+            background-image: url(../images/grid-item-core.jpg);
+        }
+        .grid-text {
+            font-size: 2.688em;
+            @include mq ($from: xsmall, $until: medium) {
+                font-size: 1.500em;
+            }
+        }
+    }
+    &.innovation{
+        .background-container{
+            background-image: url(../images/innovation-landing-background.jpg);
+        }
+
+
+    }
+    &.results{
+        .background-container{
+            background-image: url(../images/grid-item-results.jpg);
+        }
+    }
+    &.customer{
+        .background-container{
+            background-image: url(../images/grid-item-customer.jpg);
+        }
+    }
+    &.winning{
+        .background-container{
+            background-image: url(../images/grid-item-winning.jpg);
+        }
+    }
+    &.integrity{
+        .background-container{
+            background-image: url(../images/grid-item-integrity.jpg);
+        }
+    }
+    &.speak{
+        .background-container{
+            background-image: url(../images/grid-item-speak.jpg);
+        }
+    }
+}

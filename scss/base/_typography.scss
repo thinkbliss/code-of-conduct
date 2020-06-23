@@ -1,0 +1,710 @@
+// _typography.scss
+
+/* Typography */
+
+body{
+	// color: #333333;
+	line-height: 22px;
+
+	@include mq($from: small) {
+    	line-height: 24px;
+    }
+
+    .sunbeam{
+    	color: $color-sunbeam;
+    }
+}
+
+a{
+	color: $color-blue-dell;
+
+	&:hover{
+		color: $color-blue-dell;
+		text-decoration: none;
+	}
+}
+
+sup {
+    color: inherit;
+    font-size: 45%;
+    top: -0.7em;
+}
+
+i{
+	font-style: italic;
+}
+
+.heading{
+	sup{
+		font-size: 30%;
+    	top: -1.7em;
+	}
+}
+
+p{
+	font-size: 1.5rem;
+	line-height: 21px;
+	margin-bottom: 20px;
+
+
+	@include mq($from: small) {
+    	font-size: 1.6rem;
+		line-height: 22px;
+    }
+
+    @include mq($from: medium) {
+    	font-size: 1.6rem;
+		line-height: 22px;
+    }
+
+    @include mq($from: large) {
+    	font-size: inherit;
+		line-height: inherit;
+    }
+
+}
+
+
+
+.eyebrow{
+    color: $color-sunbeam;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+
+
+    span{
+        display: block;
+    }
+
+    &.large{
+    	font-size: 1.2rem;
+    	letter-spacing: 3px;
+    	margin-bottom: 4px;
+
+    	@include mq($from: medium) {
+    		font-size: 1.4rem;
+    		margin-bottom: 14px;
+    		letter-spacing: 4px;
+    	}
+
+
+    	@include mq($from: large) {
+    		font-size: 1em;
+    		margin-bottom: 16px;
+    		letter-spacing: 4px;
+    	}
+    }
+}
+
+
+
+.heading{
+    font-size: 24px;
+	line-height: 30px;
+
+	@include mq($from: medium) {
+        font-size: 36px;
+    	line-height: 42px;
+    }
+
+    @include mq($from: xlarge) {
+        font-size: 48px;
+        line-height: 54px;
+    }
+}
+
+
+.section-heading{
+    font-size: 30px;
+	line-height: 36px;
+	font-weight: 200;
+	margin-bottom: 12px;
+	position: relative;
+
+	span{
+		font-weight: 400;
+	}
+
+	@include mq($from: small) {
+        font-size: 36px;
+    	line-height: 42px;
+    	margin-bottom: 14px;
+    }
+
+    @include mq($from: medium) {
+        font-size: 42px;
+    	line-height: 48px;
+    	margin-bottom: 14px;
+    }
+
+
+    @include mq($from: large) {
+        font-size: 48px;
+        line-height: 54px;
+        margin-bottom: 16px;
+    }
+}
+
+.sub-heading{
+    font-size: 18px;
+	line-height: 24px;
+	font-weight: 200;
+	position: relative;
+
+	span{
+		font-weight: 400;
+	}
+
+	@include mq($from: medium) {
+        font-size: 20px;
+    	line-height: 26px;
+    }
+
+
+    @include mq($from: xlarge) {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+
+div{
+
+// text modifier matrix
+	// @include mq($until: small) {
+		&.col-3{
+			.heading{
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: 400;
+				margin-bottom: 9px;
+				&:before{
+					content:"14/18 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 8px;
+				line-height: 16px;
+				margin-bottom: 0px;
+			}
+		}
+
+		&.col-4,
+		&.col-5{
+			.heading{
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: 400;
+				margin-bottom: 9px;
+				&:before{
+					// content:"14/18 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 8px;
+				line-height: 16px;
+				margin-bottom: 0px;
+			}
+		}
+
+
+		&.col-6,
+		&.col-7
+		{
+			.heading{
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: 400;
+				margin-bottom: 9px;
+				&:before{
+					// content:"14/18 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 8px;
+				line-height: 16px;
+				margin-bottom: 0px;
+			}
+		}
+		&.col-8,
+		&.col-9,
+		&.col-10,
+		&.col-11,
+		&.col-12
+		{
+			.heading{
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 200;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 6px;
+			}
+		}
+
+	// }
+
+
+	@include mq($from: small, $until: medium) {
+		&.col-sm-3{
+			.heading{
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: 400;
+				margin-bottom: 9px;
+				&:before{
+					// content:"14/20 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 8px;
+				line-height: 16px;
+				margin-bottom: 0px;
+			}
+		}
+
+		&.col-sm-4,
+		&.col-sm-5{
+			.heading{
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 400;
+				margin-bottom: 9px;
+				&:before{
+					// content:"18/24 ";
+				}
+			}
+			.eyebrow{
+				font-size: 12px;
+				line-height: 24px;
+				margin-bottom: 0px;
+			}
+		}
+
+
+		&.col-sm-6,
+		&.col-sm-7,
+		{
+			.heading{
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"24/30 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 6px;
+			}
+		}
+
+		&.col-sm-8,
+		&.col-sm-9,
+		&.col-sm-10,
+		&.col-sm-11,
+		&.col-sm-12{
+			.heading{
+				font-size: 30px;
+				line-height: 36px;
+				margin-bottom: 16px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+    }
+
+    @include mq($from: medium) {
+		&.col-md-3{
+			.heading{
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 400;
+				margin-bottom: 9px;
+				&:before{
+					// content:"18/24 ";
+				}
+			}
+			.eyebrow{
+				font-size: 12px;
+				line-height: 24px;
+				margin-bottom: 0;
+			}
+		}
+
+		&.col-md-4,
+		&.col-md-5{
+			.heading{
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"24/30 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 6px;
+			}
+		}
+
+
+		&.col-md-6,
+		&.col-md-7
+
+		{
+			.heading{
+				font-size: 30px;
+				font-weight: 200;
+				line-height: 36px;
+				margin-bottom: 16px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+		&.col-md-8,
+		&.col-md-9,
+		&.col-md-10,
+		&.col-md-11,
+		&.col-md-12{
+			.heading{
+				font-size: 36px;
+				font-weight: 200;
+				line-height: 42px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+    }
+
+    @include mq($from: large) {
+		&.col-lg-2{
+			.heading{
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 12px;
+				line-height: 24px;
+				margin-bottom: 0;
+			}
+		}
+
+		&.col-lg-3{
+			.heading{
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 6px;
+			}
+		}
+
+
+		&.col-lg-4,
+		&.col-lg-5{
+			.heading{
+				font-size: 30px;
+				font-weight: 200;
+				line-height: 36px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+
+		&.col-lg-6,
+		&.col-lg-7
+		{
+			.heading{
+				font-size: 36px;
+				line-height: 42px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+		&.col-lg-8,
+		&.col-lg-9,
+		&.col-lg-10,
+		&.col-lg-11,
+		&.col-lg-12
+		{
+			.heading{
+				font-size: 42px;
+				font-weight: 200;
+				line-height: 48px;
+				margin-bottom: 26px;
+				&:before{
+					// content:"48/52 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+    }
+
+    @include mq($from: xlarge) {
+		&.col-xl-2{
+			.heading{
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 12px;
+				line-height: 24px;
+				margin-bottom: 4px;
+			}
+		}
+
+		&.col-xl-3{
+			.heading{
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 6px;
+			}
+		}
+
+
+		&.col-xl-4,
+		&.col-xl-5{
+			.heading{
+				font-size: 30px;
+				font-weight: 200;
+				line-height: 36px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+
+		&.col-xl-6,
+		&.col-xl-7
+		{
+			.heading{
+				font-size: 36px;
+				font-weight: 200;
+				line-height: 42px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+		&.col-xl-8,
+		&.col-xl-9,
+		&.col-xl-10,
+		&.col-xl-11,
+		&.col-xl-12
+		{
+			.heading{
+				font-size: 42px;
+				font-weight: 200;
+				line-height: 48px;
+				margin-bottom: 26px;
+				&:before{
+					// content:"48/52 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+    }
+
+    @include mq($from: xxlarge) {
+		&.col-xxl-2{
+			.heading{
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 12px;
+				line-height: 24px;
+				margin-bottom: 4px;
+			}
+		}
+
+		&.col-xxl-3{
+			.heading{
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 400;
+				margin-bottom: 13px;
+				&:before{
+					// content:"30/36 ";
+				}
+			}
+
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 6px;
+			}
+		}
+
+
+		&.col-xxl-4,
+		&.col-xxl-5{
+			.heading{
+				font-size: 30px;
+				font-weight: 200;
+				line-height: 36px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+		&.col-xxl-6,
+		&.col-xxl-7
+		{
+			.heading{
+				font-size: 36px;
+				font-weight: 200;
+				line-height: 42px;
+				margin-bottom: 21px;
+				&:before{
+					// content:"36/42 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+
+		&.col-xxl-8,
+		&.col-xxl-9,
+		&.col-xxl-10,
+		&.col-xxl-11,
+		&.col-xxl-12
+		{
+			.heading{
+				font-size: 42px;
+				font-weight: 200;
+				line-height: 48px;
+				margin-bottom: 26px;
+				&:before{
+					// content:"48/52 ";
+				}
+			}
+			.eyebrow{
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 13px;
+			}
+		}
+    }
+}

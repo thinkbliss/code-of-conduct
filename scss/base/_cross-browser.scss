@@ -1,0 +1,57 @@
+
+
+/*----- INTERNET EXPLORER 10 + ------*/
+.gt-ie10{
+    .switch-toggle{
+        label {
+            &:nth-child(2):nth-last-child(6), &:nth-child(2):nth-last-child(6) ~ label {
+
+            }
+            &:nth-child(2):nth-last-child(6) ~ a {
+                transform: translateY(-17px);
+            }
+
+        }
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
+}
+
+/*----- SAFARI 10 + ------*/
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .quiz-container .switch-toggle label:nth-child(2):nth-last-child(6) ~ a {
+            width: 35px;
+            position: relative;
+            top: 49%;
+            left: -1px;
+            -webkit-transform: translateY(-17px);
+            height: 35px;
+            background: white;
+
+        }
+        #section-start-grid .grid-container .grid-item .background-container {
+            padding: 55%;
+        }
+        .quiz-container #quiz-app .quizzes .quiz .sentence-connector .sentence-connector-question-container {
+            padding: 37% 10%;
+        }
+    }
+}
+
+
+/*----- FIREFOX ------*/
+@-moz-document url-prefix() {
+    .quiz-container .switch-toggle label:nth-child(2):nth-last-child(6) ~ a {
+        width: 35px;
+        position: relative;
+        top: 49%;
+        left: -1px;
+        -webkit-transform: translateY(-17px);
+        height: 35px;
+        background: white;
+
+    }
+}

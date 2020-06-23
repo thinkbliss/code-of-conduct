@@ -1,0 +1,41 @@
+// _slick.scss
+
+/* Slick Slider */
+
+.sub-nav-container {
+    .slick-prev, .slick-next {
+        position: absolute;
+        display: block;
+        height: 100%;;
+        width: 55px;
+        cursor: pointer;
+        color: transparent;
+        top: 50%;
+        -webkit-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+        border: none;
+        outline: none;
+        background: transparent url(../images/icons/icon-slider-arrows.png) no-repeat 0 0;
+        background-size: 100%;
+    }
+    .slick-prev {
+        top: 0;
+        left: -45px;
+        border-left: 1px solid #7e7874;
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        background-position: -20px center;
+        &.slick-disabled {
+            background-position: 22px center;
+        }
+    }
+    .slick-next {
+        right: -45px;
+        border-left: 1px solid #7e7874;
+        background-position: -20px center;
+        &.slick-disabled {
+            background-position: 22px center;
+        }
+    }
+}

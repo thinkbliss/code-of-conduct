@@ -1,0 +1,9 @@
+// _emc-theme.scss
+
+
+.emc-theme{
+	margin-top: -44px;
+	@include mq($from: small) {
+        margin-top: -77px;
+    }
+}

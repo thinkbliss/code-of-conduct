@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="64.03" viewBox="0 0 52 64.03">
+  
+<defs>
+    <style>
+      path {
+        fill: none;
+        stroke: #23527c;
+        stroke-width: 4px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path d="M506.992,6158.02L555.015,6128l-48.023-30.02v60.04Z" transform="translate(-505 -6096)"/>
+</svg>

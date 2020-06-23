@@ -1,0 +1,21 @@
+// hero
+
+.hero{
+    
+	.container-fluid {
+		background-size: cover;
+		background-position: center;
+		background-image: url(../images/ARC_Hero_Better.jpg);
+    }
+
+    .hero-content-container{
+    	height: 640px;
+    	display: table;
+    }
+    .hero-content{
+    	display: table-cell;
+    	vertical-align: middle;
+    	margin-bottom: 100px;
+    }
+
+}

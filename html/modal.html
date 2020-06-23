@@ -1,0 +1,410 @@
+
+    <!-- ------------------
+    MODAL CONTENT
+    ------------------ -->
+
+        <div class="quiz-container ">
+            <div class="quiz-content">
+                <div id="quiz-app" class="quiz-app" :class=quiz_name>
+                    
+                    <div class="log hide">
+                        state : {{state}} <br>
+                        quiz_name : {{quiz_name}} <br>
+                        quizIndex : {{quizIndex}} <br>
+                        response : {{response}} <br>
+                        responseCorrect : {{responseCorrect}} <br>
+                        quiz_type : {{quiz_type}} <br>
+                        quizScore : {{quizScore}}<br>
+                        responseRequiredAll : {{responseRequiredAll}}<br> <br>
+                    </div>
+
+                    <div class="background-container-wrapper" :class=state>
+                        <div class="background-container" :class=quiz_class>
+                            <div class="circle-container">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="modal-close-container">
+                            <button class="btn-close close"></button>
+                        </div>
+
+
+                    <transition name="fade">
+                        <div id="intro" class="intro-inner" v-if="intro">
+
+                            <div class="panel-content">
+                                <div class="panel-content-inner table-cell">
+                                    <img src="/content/dam/delltechnologies/assets/microsites/codeofconduct/2018/images/laptop-gradcap.png" class="img-badge"><br>
+                                    <div class="quiz-title">{{quizContent.start.title}}</div>
+                                    {{quizContent.start.text}}
+                                    <a class="cta cta-yellow-arrow" v-on:click="startQuiz"></a>
+                                </div>
+                            </div>
+
+                            <div class="modal-close-container">
+                                <button class="btn-close close"></button>
+                            </div>
+
+                        </div>
+                    </transition>
+
+
+                    <transition name="fade">
+
+                        <div class="quizzes" v-if="quiz" >
+
+                            <div class="quiz" v-for="(quiz, index) in quizzes" v-if="index === quizIndex">
+
+                                <div class="panel-content" :class=quiz.class v-if="quiz.class === 'who-said-it'">
+                                    <div class="panel-content-inner table-cell">
+                                        <!-- <span class="quiz-text" v-html="quiz.text"></span> <br> -->
+                                        <div class="question" v-for="(question, questionIndex) in quiz.questions">
+
+                                            <p class="quiz-question" v-html="question.text"></p>
+
+                                            <div class="quiz-answers">
+                                                <ul>
+                                                    <li>
+                                                        <a :id="answer.id" v-for="(answer, index) in question.answers" class="answer-item" v-on:click="submitAnswer(questionIndex, index, question.response, answer.id)">
+                                                            <div class="answer-item-inner">
+                                                                <div class="thumbnail" v-if="answer.image != undefined">
+                                                                    <img :src=answer.image>
+                                                                </div>
+                                                                <div class="description">
+                                                                    <div class="text">
+                                                                        {{answer.text}}
+                                                                    </div>
+                                                                    <p class="subText">
+                                                                        {{answer.subText}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <small class="template-name">template: who-said-it</small>
+                                    </div>
+
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-content" :class=quiz.class v-else-if="quiz.type === 'multiple_choice'">
+                                    <div class="panel-content-inner-mobile table-row">
+                                        <div class="panel-content-inner-mobile-image table-cell">
+                                            <img :src=quiz.image>
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="panel-content-inner table-cell">
+                                            <div v-if="quiz.text !== ''">
+                                                <span class="quiz-text" v-html="quiz.text"></span> <br>
+                                            </div>
+
+                                            <div class="question" v-for="(question, questionIndex) in quiz.questions">
+
+                                                <div class="quiz-question">
+                                                    <span v-html="question.text"></span>
+                                                </div>
+
+                                                <div class="quiz-answers">
+                                                    <ul>
+                                                        <li v-for="(answer, index) in question.answers">
+                                                            <input type="radio" :id="answer.id" v-bind:value="answer.id" v-bind:name="quiz.class" v-on:change="submitAnswer(questionIndex, index, question.response)" >
+                                                            <label :for="answer.id" class="contain">
+                                                                {{ answer.text }}
+                                                            </label>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <small class="template-name">template: multiple-choice</small>
+                                        </div>
+                                    </div>
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+                                </div>
+
+                                <div class="panel-content" :class=quiz.class v-else-if="quiz.class === 'sentence-connector'">
+                                    <div class="panel-content-inner table-cell">
+                                        <p class="quiz-text" v-html="quiz.text"></p>
+                                        <div class="question" v-for="(question, questionIndex) in quiz.questions">
+
+                                            <div class="quiz-question">
+                                                <div class="sentence-connector-question-container">
+                                                    <span v-html="question.text"></span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="quiz-answers">
+                                                <ul>
+                                                    <li v-for="(answer, index) in question.answers">
+                                                        <input type="radio" :id="answer.id" v-bind:value="answer.id" v-bind:name="quiz.class" v-on:change="submitAnswer(questionIndex, index, question.response)" >
+                                                        <label :for="answer.id" class="contain">
+                                                            <span>{{ answer.text }}</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <small class="template-name">template: senctence-connector</small>
+                                    </div>
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+                                </div>
+
+                                <div class="panel-content" :class=quiz.class v-else-if="quiz.class === 'true-false'">
+                                    <div class="panel-content-inner table-cell">
+                                        <span class="quiz-text" v-html="quiz.text"></span> <br>
+                                        <div class="question" v-for="(question, questionIndex) in quiz.questions">
+
+                                            <div class="quiz-question">
+                                                {{question.text}}
+                                            </div>
+
+                                            <div class="quiz-answers">
+
+                                                <div class="switch-toggle switch-3 switch-candy">
+                                                    <input id="on" v-bind:id="question.answers[0].id" v-bind:name="question.answers[0].name" type="radio" checked="" v-on:change="submitAnswer(questionIndex, 0, question.response, question.answers[0].name)"/>
+                                                    <label for="on" v-bind:for="question.answers[0].id" onclick="">T</label>
+
+                                                    <input id="na" v-bind:id="question.answers[1].id" v-bind:name="question.answers[1].name" type="radio" disabled checked="checked" />
+                                                    <label for="na" v-bind:for="question.answers[1].id" class="disabled" onclick="">&nbsp;</label>
+
+                                                    <input id="off" v-bind:id="question.answers[2].id" v-bind:name="question.answers[2].name" type="radio" v-on:change="submitAnswer(questionIndex, 1, question.response, question.answers[2].name)"/>
+                                                    <label for="off" v-bind:for="question.answers[2].id" onclick="">F</label>
+
+                                                    <a></a>
+                                                </div>
+
+                                                <div class="question-status-container">
+                                                    <div class="question-status correct"></div>
+                                                    <div class="question-status incorrect"></div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <small class="template-name">template: true-false</small>
+                                    </div>
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+                                </div>
+
+                                <div class="panel-content" :class=quiz.class v-else-if="quiz.type === 'sentence_drop_down'">
+                                    <div class="panel-content-inner-mobile table-row">
+                                        <div class="panel-content-inner-mobile-image table-cell">
+                                            <img :src=quiz.image>
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="panel-content-inner table-cell">
+                                            <span class="quiz-text" v-html="quiz.text"></span>
+                                            <div class="question" v-for="(question, questionIndex) in quiz.questions">
+
+                                                <div class="quiz-question">
+                                                    {{question.text}}
+
+                                                    <div class="select-container">
+                                                        <div class="question-status-container">
+                                                            <div class="question-status correct"></div>
+                                                            <div class="question-status incorrect"></div>
+                                                        </div>
+
+                                                        <select v-if='question.answers !== undefined' @change="handleChange" :id='question.id'>
+                                                            <option :data-qi='questionIndex'>select</option>
+                                                            <option  v-for="(answer, answerIndex) in question.answers" :data-index='answerIndex' :value='answer.text' :data-qi='questionIndex' :data-rc='question.response'>
+                                                                {{answer.text}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            {{quiz.questionEnd}}
+                                            <small class="template-name">template: sentence dropdown</small>
+                                        </div>
+                                    </div>
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-content" :class=quiz.class v-else-if="quiz.class === 'drag-and-drop'">
+                                    <div class="panel-content-inner flex">
+                                        <span class="quiz-text" v-html="quiz.text"></span> <br>
+                                        <div class="question" v-for="(question, questionIndex) in quiz.questions">
+
+                                            <div class="quiz-answers">
+                                                <ul>
+                                                    <li>
+                                                        <a :id="answer.id" v-for="(answer, index) in question.answers" class="answer-item" v-on:click="submitAnswer(questionIndex, index, question.response, answer.id)">
+                                                            <div class="answer-item-inner">
+                                                                <div class="answer-item-image-container">
+                                                                    <img :src=question.image>
+                                                                        <div class="question-status-container">
+                                                                        <div class="question-status correct"></div>
+                                                                        <div class="question-status incorrect"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="text" v-html="question.text"></div>
+
+
+                                                            </div>
+
+
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                        <small class="template-name">template: drag-and-drop</small>
+                                    </div>
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-content" :class=quiz.class v-else>
+                                    <div class="panel-content-inner table-cell">
+                                        <span class="quiz-text" v-html="quiz.text"></span> <br>
+                                        <div class="question" v-for="(question, questionIndex) in quiz.questions">
+                                            <div class="quiz-question">
+                                                {{question.text}}
+                                            </div>
+
+                                            <div class="quiz-answers">
+                                                <ul>
+                                                    <li v-for="(answer, index) in question.answers">
+                                                        <a class="answer-item" v-on:click="submitAnswer(questionIndex, index, question.response)">
+                                                            <div class="answer-item-inner">
+                                                                <div v-if="answer.image != undefined">
+                                                                    <img :src=answer.image>
+                                                                </div>
+                                                                {{answer.text}}
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <small class="template-name">template: multiple-choice</small>
+                                    </div>
+                                    <div class="modal-close-container">
+                                        <button class="btn-close close"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cta-submit-container">
+                                <button class="cta cta-yellow-arrow cta-submit" disabled v-on:click="submitQuiz"></button>
+                                <!-- <a class="cta cta-yellow-arrow cta-submit" disabled v-on:click="submitQuiz"></a> -->
+                            </div>
+
+                        </div>
+                    </transition>
+
+                    <transition name="fade">
+                        <div class="response"  v-if="responseState" >
+                            <!-- your response was {{quizScore}}<br> -->
+                            <div class="panel-content" v-if="quizScore < 20">
+                                <div class="panel-content-inner table-cell">
+                                    <img src="/content/dam/delltechnologies/assets/microsites/codeofconduct/2018/images/laptop-gradcap.png" class="img-badge"><br>
+                                    <br>
+                                    <div class="quiz-title">Incorrect!</div>
+                                    <p>{{responseMessage}} </p>
+                                </div>
+
+
+                            </div>
+                            <div class="panel-content" v-else-if="quizScore < 50">
+                                <div class="panel-content-inner table-cell">
+                                    <img src="/content/dam/delltechnologies/assets/microsites/codeofconduct/2018/images/laptop-gradcap.png" class="img-badge"><br>
+                                    <div class="quiz-title">Nice try</div>
+                                    <p>{{responseMessage}} </p>
+                                </div>
+                            </div>
+                            <div class="panel-content" v-else-if="quizScore < 99">
+                                <div class="panel-content-inner table-cell">
+                                    <img src="/content/dam/delltechnologies/assets/microsites/codeofconduct/2018/images/laptop-gradcap.png" class="img-badge"><br>
+                                    <div class="quiz-title">Good job</div>
+                                    <p>{{responseMessage}} </p>
+                                </div>
+                            </div>
+
+                            <div class="panel-content" v-else>
+                                <div class="panel-content-inner table-cell">
+                                    <img src="/content/dam/delltechnologies/assets/microsites/codeofconduct/2018/images/laptop-gradcap.png" class="img-badge"><br>
+                                    <div class="quiz-title">Correct!</div>
+                                    <p>{{responseMessage}} </p>
+                                </div>
+                            </div>
+
+                            <div class="cta-submit-container">
+                                <!-- <button class="btn-next" v-on:click="nextQuiz">next</button> -->
+                                <!-- <a class="cta cta-yellow-arrow cta-next" v-on:click="nextQuiz"></a> -->
+
+                                <button class="cta cta-yellow-arrow cta-next" disabled v-on:click="nextQuiz"></button>
+
+                            </div>
+                            <div class="modal-close-container">
+                                <button class="btn-close close"></button>
+                            </div>
+                            
+                        </div>
+
+                    </transition>
+
+                    <transition name="fade">
+                        <div class="done"  v-if="finished" >
+                            <div class="panel-content">
+                                <div class="panel-content-inner table-cell">
+                                    <div class="quiz-title">You Finished!</div>
+                                    <p>{{quizContent.end.text}}</p>
+
+                                    <ul class="link-list">
+                                        <li v-for="(link, index) in quizContent.end.links">
+                                            <a :href=link.url target="_blank">
+                                                <span>{{link.text}}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="modal-close-container">
+                                <button class="btn-close close"></button>
+                            </div>
+
+                        </div>
+                    </transition>
+
+
+                    <!-- <div v-else>
+                        Else
+                    </div> -->
+
+
+
+                </div>
+            </div>
+        </div>

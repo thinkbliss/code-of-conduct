@@ -1,0 +1,481 @@
+// _buttons.scss
+
+// preload css images
+body:after {
+  content: url('../images/icons/icon-btn-arrow-hover.svg') url('../images/icons/icon-video-blue-hover.svg');
+  display: none;
+}
+
+.cta-link{
+    font-weight: 400;
+    font-size: 1em;
+    display: block;
+    color: $color-blue-dell;
+    position: relative;
+
+    span{
+        transition: .2s;
+    }
+
+    // adds left margin when two or more  elements are next to eachother
+    @include mq($from: small) {
+        display: inline-block;
+
+        + .cta-link{
+            margin-left: 1em;
+        }
+    }
+
+
+    &:hover{
+        text-decoration: none;
+        span{
+            text-decoration: none;
+            // color: #ffffff;
+        }
+    }
+
+    &.gt-arrow{
+        text-transform: uppercase;
+        font-size: 1.2rem;
+
+
+        span{
+
+            &:after{
+                content: "";
+                display: inline-block;
+                position: relative;
+                top: 2px;
+                width: 8px;
+                height: 14px;
+                background-image: url('../images/icons/icon-btn-arrow.svg');
+                background-position: 50%;
+                background-size: 7px 9px;
+                background-repeat: no-repeat;
+                margin-left: 4px;
+                white-space: nowrap;
+
+            }
+        }
+
+
+
+        @include mq ($from: medium) {
+            font-size: 1.4rem;
+            span{
+                &:after{
+                    top: 1px;
+                    background-size: 7px 11px;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+
+        &:hover{
+            span{
+                &:after{
+                    background-image: url('../images/icons/icon-btn-arrow-hover.svg');
+                }
+            }
+        }
+
+
+
+        &.aqua{
+            color: $color-aqua;
+
+            span{
+                &:after{
+                    background-image: url('../images/icons/icon-btn-arrow-aqua.svg');
+                }
+            }
+
+            &:hover{
+                // color: #ffffff;
+                // span{
+                //     &:after{
+                //         background-image: url('../images/icons/icon-btn-arrow-white.svg');
+                //     }
+                // }
+            }
+        }
+
+
+        &.white{
+            color: #ffffff;
+            span{
+                &:after{
+                    background-image: url('../images/icons/icon-btn-arrow-white.svg');
+                }
+            }
+
+            &:hover{
+                color: #ffffff;
+                span{
+                    &:after{
+                        background-image: url('../images/icons/icon-btn-arrow-white.svg');
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    &.icon{
+        display: block;
+        margin-left: 0;
+
+        span{
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+
+        @include mq($from: small) {
+            display: inline-table;
+
+            + .cta-link{
+                margin-left: 1em;
+            }
+        }
+
+        &:before{
+            content: "";
+            display: table-cell;
+            position: relative;
+            // background-image: url('../images/icons/icon-pdf.png');
+            background-size: 23px 30px;
+            background-repeat: no-repeat;
+            background-position: bottom left;
+            width: 33px;
+            height: 30px;
+            // z-index: 2;
+
+            svg {
+                fill:#ccc;
+            }
+        }
+
+        &.icon-pdf{
+            &:before{
+                background-image: url('../images/icons/icon-pdf.png');
+            }
+
+            &.blue{
+                &:before{
+                    background-image: url('../images/icons/icon-pdf-blue.png');
+                }
+            }
+        }
+
+        &.icon-video{
+            &:before{
+                background-image: url('../images/icons/icon-video.svg');
+            }
+
+            &.blue{
+                &:before{
+                    background-image: url('../images/icons/icon-video-blue.svg');
+                }
+            }
+        }
+
+        &.icon-twitter{
+            &:before{
+                content: "";
+                display: block;
+                position: absolute;
+                background-image: url(../images/icons/icon-twitter-white.png);
+                background-position: 50% 50%;
+                background-size: 30px;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                top: 0;
+                filter: drop-shadow(2px 2px 7px rgba(0,0,0, .5));
+
+                @include mq($from: medium) {
+                    background-size: 40px;
+                }
+            }
+        }
+
+
+        &.icon-play-video{
+            &:before{
+                content: "";
+                display: block;
+                position: absolute;
+                background-image: url(../images/icons/icon-play-video-white.png);
+                background-position: 50% 50%;
+                background-size: 27px;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                top: 0;
+                filter: drop-shadow(2px 2px 7px rgba(0,0,0, .5));
+                @include mq($from: medium) {
+                    background-size: 40px;
+                }
+            }
+        }
+
+
+
+        &:hover{
+            &.icon-video{
+                &:before{
+                    background-image: url('../images/icons/icon-video-hover.svg');
+                }
+
+                &.blue{
+                    &:before{
+                        background-image: url('../images/icons/icon-video-blue-hover.svg');
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.cta-link-box {
+    display: table;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+
+
+
+    @include mq($from: medium) {
+        width: auto;
+    }
+
+    > span{
+        display: table-cell;
+    }
+
+    > div{
+        display: table;
+        margin: 0 auto;
+        vertical-align: middle;
+        font-weight: normal;
+        font-size: 16px;
+        font-size: 1.6rem;
+        border: solid 2px;
+        border-collapse: separate;
+        border-spacing: 12px 5px;
+        min-height: 42.4px;
+        position: relative;
+        width: 100%;
+        border-color: $color-blue-dell;
+        color: $color-blue-dell;
+        background-color: transparent;
+        transition: background-color .5s;
+
+
+        .cta-text{
+            display: table-cell;
+            vertical-align: middle;
+            padding: 3px 0;
+            line-height: 22px;
+            text-align: center;
+            text-transform: uppercase;
+            width: auto;
+        }
+    }
+
+    &:hover{
+        .cta-text, span{
+            text-decoration: none;
+        }
+
+        > div{
+            border-color: $color-blue-dell;
+            color: #000;
+            background-color: $color-blue-dell;
+            padding-left: 0;
+            border-left-width: 2px;
+            transition: background-color .2s;
+        }
+    }
+
+    &.aqua{
+        > div{
+            border-color: $color-aqua;
+            color: $color-aqua;
+        }
+
+        &:hover{
+            > div{
+                border-color: $color-aqua;
+                color: #000;
+                background-color: $color-aqua;
+            }
+        }
+    }
+
+
+    &.play{
+
+
+
+        > div{
+            padding-left: 4px;
+            border-left-width: 0;
+        }
+
+        .cta-play{
+            border-color: $color-blue-dell;
+            color: $color-blue-dell;
+            background-color: transparent;
+            background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%22-22.28571%2C-22.28571%2C68.57143%2C68.57143%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20fill%3D%22transparent%22%20stroke%3D%22%23007db8%22%20stroke-width%3D%223%22%20style%3D%22%22%20d%3D%22M2%200l20%2012-20%2012z%22%20%2F%3E%3C%2Fsvg%3E);
+            border: solid 2px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 42px;
+            height: 42.4px;
+            min-height: 42.4px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        &:hover{
+            .cta-play{
+                background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%22-22.28571,-22.28571,68.57143,68.57143%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20fill%3D%22%23000000%22%20stroke%3D%22%23000000%22%20stroke-width%3D%223%22%20style%3D%22%22%20d%3D%22M2%200l20%2012-20%2012z%22%20%2F%3E%3C%2Fsvg%3E);
+                border-color: $color-blue-dell;
+                color: #000;
+                background-color: $color-blue-dell;
+            }
+
+            >span:not(.cta-play){
+                width: 2px;
+            }
+
+            > div{
+                padding-left: 0;
+                border-left-width: 2px;
+            }
+        }
+
+        &.aqua{
+            .cta-play{
+                border-color: $color-aqua;
+                background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%22-22.28571%2C-22.28571%2C68.57143%2C68.57143%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20fill%3D%22transparent%22%20stroke%3D%22%231bc8ed%22%20stroke-width%3D%223%22%20style%3D%22%22%20d%3D%22M2%200l20%2012-20%2012z%22%20%2F%3E%3C%2Fsvg%3E);
+            }
+
+            &:hover{
+                .cta-play{
+                    background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%22-22.28571,-22.28571,68.57143,68.57143%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20fill%3D%22%23000000%22%20stroke%3D%22%23000000%22%20stroke-width%3D%223%22%20style%3D%22%22%20d%3D%22M2%200l20%2012-20%2012z%22%20%2F%3E%3C%2Fsvg%3E);
+                    border-color: $color-aqua;
+                    color: #000;
+                    background-color: $color-aqua;
+                }
+            }
+        }
+
+
+    }
+
+}
+
+
+// .cta-link-box{
+//     // display: block;
+//     // text-align: center;
+//     // font-size: 1em;
+//     // font-weight: 400;
+//     // border: 2px solid $color-blue-dell;
+//     // color: $color-blue-dell;
+//     // text-transform: uppercase;
+//     // font-size: 1.4rem;
+//     // margin-bottom: 20px;
+//     // transition: .3s;
+
+//     @include mq($from: medium) {
+//         // font-size: 1em;
+//         // display: inline-block;
+
+//         + .cta-link-box{
+//             // margin-left: 1em;
+//         }
+//     }
+
+//     span{
+//         // display: inline-block;
+//         // padding: 9px 13px 8px;
+//         @include mq($from: medium) {
+//             // padding: 9px 58px 8px;
+//         }
+//     }
+
+//     &:hover{
+//         // border: 2px solid $color-blue-dell;
+//         // color: #000000;
+//         // background-color: $color-blue-dell;
+
+//         span{
+//             // display: inline-block;
+//             // text-decoration: none;
+//         }
+//     }
+
+//     &.aqua{
+//         // border: 2px solid $color-aqua;
+//         // color: $color-aqua;
+
+//         &:hover{
+//             // border: 2px solid $color-aqua;
+//             // color: #000000;
+//             // background-color: $color-aqua;
+//         }
+//     }
+
+// }
+
+.cta-link-icon-video-poster-play{
+
+}
+
+.btn.btn-play{
+    // margin-top: 15px;
+
+    &:focus{
+        outline: 0;
+    }
+
+    .icon-play{
+        height: 48px;
+        width: 48px;
+        display: table-cell;
+        vertical-align: middle;
+        background-color: $color-aqua;
+        padding-left: 4px;
+
+        img{
+            width: 18px;
+            height: initial;
+            margin: auto;
+        }
+    }
+
+    span{
+        text-transform: none;
+        color: #ffffff;
+        font-weight: 200;
+        padding-left: 10px;
+    }
+
+    &:hover{
+        span{
+            color: $color-blue-dell;
+        }
+    }
+    &:focus{
+        outline: 0;
+    }
+}

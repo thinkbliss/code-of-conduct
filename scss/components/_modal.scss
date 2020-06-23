@@ -1,0 +1,1378 @@
+// _modal.scss
+
+.modal{
+    height: 100%;
+    width: 100%;
+    // max-width: 1600px;
+    margin: auto;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 101;
+    display: none;
+
+    &:before{
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0,0,0, 0.4);
+    }
+
+    .modal-content{
+        position: relative;
+        height: inherit;
+    }
+}
+
+
+.quiz-container{
+    height: 100%;
+    // height: 100vh;
+
+    .quiz-content{
+        width: 100%;
+        max-width: 980px;
+        margin: auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100%;
+
+
+        color: $color-text-grey;
+        background: rgba(255,255,255, 1.0);
+
+        @include mq ($from: large){
+            width: 90%;
+            max-height: 560px;
+        }
+    }
+
+    .circle-container{
+        position: relative;
+                    height: 100%;
+                    width: 100%;
+                    margin-left: 50%;
+    }
+
+
+    // TEMPLATE SPECIFIC STYLES
+    #quiz-app{
+        height: 100%;
+
+        .intro-inner{
+            height: inherit;
+            text-align: center;
+            display: flex;
+
+
+
+            p {
+                width: 60%;
+                margin: 0 auto;
+            }
+            .cta-yellow-arrow {
+                // position: absolute;
+                // left: 50%;
+                // bottom: 20%;
+
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 30px;
+            }
+        }
+
+        .intro-inner, .done{
+            .panel-content{
+                @include mq ($from : large) {
+                    padding-left: 200px;
+                    padding-right: 200px;
+                }
+            }
+
+            .modal-close-container{
+                .btn-close{
+                    &:before,&:after{
+                        background-color: #ffffff;
+                    }
+                }
+            }
+        }
+
+        .quizzes{
+            height: inherit;
+
+            .quiz{
+
+                // QUIZ TYPES
+                .drag-and-drop{
+                    display: flex;
+                    flex-wrap:wrap;
+                    .panel-content-inner {
+                        &.flex {
+                            @include mq ($from: xsmall, $until: medium) {
+                                display: block;
+                            }
+                        }
+                    }
+
+
+
+                    .question{
+                        flex: 0 1 33%;
+                    }
+
+                    .quiz-answers{
+                        padding-bottom: 0;
+
+                        ul{
+                            text-align: center;
+                        }
+                        li{
+                            // margin-right: 20px;
+
+                            .answer-item{
+                                color: $color-text-grey;
+                                // transition: transform .2s;
+                                // height: 300px;
+                                // width: 200px;
+                                // border: 1px solid #ccc;
+                                // background: #fff;
+                                // margin-left: 10px;
+                                // margin-right: 10px;
+
+                                // &.selected{
+                                //     border: 2px solid #f2af1b;
+                                // }
+
+                                .answer-item-inner{
+                                    margin: auto;
+                                    text-align: center;
+                                    padding: 10px;
+                                    @include mq ($from: xsmall, $until: medium) {
+                                        padding: 15px 0;
+                                        display: flex;
+                                        // justify-content: center;
+                                        align-items: center;
+                                        text-align: left;
+                                        border-top: 1px solid $color-borders;
+                                    }
+
+                                    .answer-item-image-container{
+                                        display: inline-block;
+                                        position: relative;
+
+                                        .question-status-container{
+                                            top: 3px;
+                                            right: 4px;
+                                        }
+                                    }
+
+                                    img{
+                                        width: 100px;
+                                        border-radius: 50%;
+                                        margin-bottom: 10px;
+                                        display: block;
+                                        @include mq ($from: xsmall, $until: medium) {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+
+                                    .text{
+                                        font-size: 16px;
+                                        line-height: 22px;
+                                        @include mq ($from: xsmall, $until: medium) {
+                                            margin-left: 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.question-count-4{
+                        .question{
+                            margin: 0 auto;
+                            flex: 0 1 34%;
+                        }
+                    }
+                }
+
+                .who-said-it{
+                    .quiz-question {
+                        width: 90%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                    }
+                    .quiz-answers{
+                        ul{
+                            // margin-bottom: 40px;
+                            text-align: center;
+                        }
+                        li{
+                            display: inline-flex;
+                            display: -ms-flexbox;
+                            flex-wrap: wrap;
+                            -ms-flex-wrap: wrap;
+                            // margin-right: 20px;
+
+                            .answer-item{
+                                transition: transform .2s;
+                                // height: 300px;
+                                width: 100%;
+                                border: 1px solid #ccc;
+                                background: #fff;
+                                margin-left: 10px;
+                                margin-right: 10px;
+                                box-shadow: 0px 0px 10px 0px #ededed;
+                                transition: transform .3s;
+
+                                @include mq ($from: medium) {
+                                    // width: 30.3%;
+                                    height: auto;
+                                    flex: 1 0 30%;
+                                    -ms-flex: 1 0 30%;
+                                }
+                                @include mq ($from: xsmall, $until: medium) {
+                                    width: 100%;
+                                    //height: 15vh;
+                                    margin-bottom: 20px;
+                                    overflow: hidden;
+                                    position: relative;
+                                }
+
+                                &.selected{
+                                    border: 2px solid #f2af1b;
+                                    border-radius: 2px;
+                                }
+
+                                img{
+                                    width: 150px;
+                                }
+
+                                &:hover{
+                                    @include mq ($from: medium) {
+                                        cursor: pointer;
+                                        transform: scale(1.17);
+                                    }
+                                }
+
+                                .answer-item-inner{
+                                    margin: auto;
+                                    text-align: center;
+                                    padding: 20px 10px 10px;
+                                    @include mq ($from: xsmall, $until: medium) {
+                                        height: 140px;
+                                        min-height: 140px;
+                                        display: flex;
+                                    }
+                                    .thumbnail {
+                                        width: 66%;
+                                        margin: 0 auto;
+                                        @include mq ($from: xsmall, $until: medium) {
+                                            width: 50%;
+                                            flex: none;
+                                            position: absolute;
+                                            left: -70px;
+                                            transform: translateY(-20%);
+                                        }
+                                        @include mq($until: 320px) {
+                                            width: 55%;
+                                            top: 31px;
+                                            left: -75px;
+                                        }
+                                        img{
+                                            border-radius: 50%;
+                                            margin-bottom: 10px;
+                                            width: 100%;
+                                        }
+                                    }
+                                    .description {
+                                        @include mq ($until: medium) {
+                                            width: 60%;
+                                            margin-top: -5px;
+                                            margin-left: 38%;
+                                        }
+                                        @include mq($until: 320px) {
+                                            width: 100%;
+                                            margin-left: 57px !important;
+                                        }
+                                    }
+
+                                    .text{
+                                        margin-bottom: 8px;
+                                        font-weight: 400;
+                                        color: $color-text-grey;
+                                        @include mq ($from: xsmall, $until: medium) {
+                                            margin-bottom: 5px;
+                                        }
+                                    }
+
+                                    .subText{
+                                        font-size: 16px;
+                                        line-height: 20px;
+                                        color: $color-text-grey;
+                                        @include mq ($from: xsmall, $until: medium) {
+                                            font-size: .85em;
+                                            line-height: 1.35em;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .true-false{
+                    margin: 0 auto;
+                    width: 100%;
+                    @include mq ($from: xsmall, $until: medium) {
+                        padding-top: 50px;
+                    }
+                    .panel-content-inner {
+                        @include mq ($from: medium, $until: large) {
+                            padding-left: 60px;
+                            padding-right: 60px;
+                        }
+                    }
+                    .question{
+                        height: 66px;
+                        display: flex;
+                        display: -ms-flexbox;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        -ms-flex-wrap: wrap;
+                        flex-direction: row-reverse;
+                        @include mq ($from: xsmall, $until: medium) {
+                            height: initial;
+                            display: block;
+                            text-align: center;
+                        }
+
+                        .quiz-question{
+                            // flex: 1 0 70%;
+                            flex: 1;
+                            -ms-flex: 1;
+                            -ms-flex-wrap: wrap;
+                            font-size: .95em;
+                            @include mq ($from: xsmall, $until: medium) {
+                                margin-bottom: 20px;
+                            }
+                        }
+
+                        .quiz-answers{
+                            position: relative;
+                            // -ms-flex: 1 0 100px;
+                            // flex-grow: 1;
+                            padding-bottom: 0;
+                            padding-right: 30px;
+                            display: inline-block;
+                            
+                            @include mq ($from: xsmall, $until: medium) {
+                                margin-bottom: 20px;
+                                padding-right: 0;
+                            }
+                        }
+
+                        .switch-toggle{
+                            width: 98px;
+                            height: 35px;
+                            @include mq ($from: xsmall, $until: medium) {
+                                margin: 0 auto;
+                            }
+                            &.switch-candy {
+                                border-radius: 18px;
+                            }
+                            a {
+                                //left: -1px;
+                            }
+                            label {
+                                &:nth-child(2):nth-last-child(6) ~ input:checked:nth-child(5) + label ~ a {
+                                    left: 66.66%;
+                                }
+                                // &:nth-child(2):nth-last-child(6), .switch-toggle label:nth-child(2):nth-last-child(6) ~ label, .switch-toggle label:nth-child(2):nth-last-child(6) ~ a
+                            }
+                        }
+                        .question-status-container{
+                            top: 5px;
+                            left: -28px;
+                            @include mq ($from: small, $until: medium) {
+                                // left: 0;
+                            }
+                            @include mq ($from: xsmall, $until: small) {
+                                // left: 24px;
+                            }
+                        }
+                    }
+                }
+
+                .sentence-drop-down{
+                    .panel-content-inner {
+                        &.table-cell {
+                            line-height: 2.8em;
+                        }
+                    }
+                    .question, .quiz-question{
+                        display: inline;
+                        line-height: 1.8em;
+                    }
+
+                    .select-container{
+                        //height: 30px;
+                        //padding-left: 30px;
+                        //padding-right: 14px;
+                        margin: 0 4px;
+                        border: 1px solid #eee;
+                        display: inline-block;
+                        //position: relative;
+                        //vertical-align: middle;
+                        //width: 90%;
+                        //overflow: hidden;
+                        background: transparent url(../images/icons/icon-arrow-quiz-selectbox.png) no-repeat 0;
+                        background-position-x: calc(100% - 8px);
+                        &.correct, &.incorrect {
+                            // padding-left: 10px;
+                            // padding-right: 15px;
+                        }
+                        select {
+                            //width: 130%;
+                            // margin-top: -5px;
+                            // margin-left: 0;
+                            padding-left: 24px;
+                            padding-right: 26px;
+                            border: 0;
+                            //box-shadow: none;
+                            // margin-right: 32px;
+                            background: none;
+                            // background: rgba(0,0,0,.2);
+                            //vertical-align: top;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            border-radius: 0;
+                            text-align-last: center;
+                           text-align: center;
+                           -ms-text-align-last: center;
+                           -moz-text-align-last: center;
+                            //background: transparent url(../images/icons/icon-arrow-quiz-selectbox.png) no-repeat 97% center;
+
+                            @include mq ($from:xxlarge) {
+                                padding-left: 28px;
+                                padding-right: 30px;
+                            }
+                            &:focus {
+                                // min-width: 150px;
+                                //width: auto;
+                                outline: none;
+                            }
+                        }
+                    }
+                    .question-status-container{
+                        // top: 3px;
+                        // left: 5px;
+                        // display: inline;
+                        // position: absolute;
+                        .question-status {
+                            width: 16px;
+                            // background: none;
+                            //position: relative;
+                            text-indent: 0;
+                            visibility: hidden;
+                            position: absolute;
+                            left: 4px;
+                            top: 2px;
+                            @include mq ($from:xxlarge) {
+                                width: 20px;
+                                left: 4px;
+                                top: 4px;
+                            }
+                            &:before{
+                                //width: 23px;
+                                content: "";
+                                position: absolute;
+                                top: -17px;
+                                left: -6px;
+                            }
+                            &.correct {
+                                &:before{
+                                    // content: url(/images/icons/icon-correct.png);
+                                    // transform: scale(.5);
+                                }
+                            }
+                            &.incorrect {
+                                &:before{
+                                    // content: url(/images/icons/icon-incorrect.png);
+                                    // transform: scale(.5);
+                                }
+                            }
+                        }
+                    }
+                    .correct .correct, .incorrect .incorrect {
+                        visibility: visible;
+                    }
+
+                    .modal-close-container{
+                        .btn-close{
+                            &:before,&:after{
+                                background-color: #ffffff;
+                                @include mq ($from: large) {
+                                    background: $color-lighter-grey;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .multiple-choice{
+                    .quiz-question{
+                        margin-bottom: 20px;
+                    }
+                    .quiz-answers{
+                        li{
+                            margin-bottom: 20px;
+
+                            input{
+                            }
+
+                            label{
+                                display: inline-block;
+                                padding-left: 24px;
+                                margin-top: -23px
+                            }
+
+                        }
+                    }
+                    .modal-close-container{
+                        .btn-close{
+                            &:before,&:after{
+                                background-color: #ffffff;
+                                @include mq ($from: large) {
+                                    background: $color-lighter-grey;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .sentence-connector{
+                    width: 90%;
+                    .question{
+                        display: flex;
+                        @include mq ($from: xsmall, $until: medium) {
+                            display: block;
+                        }
+                    }
+                    .quiz-question{
+                        flex: 1 0 50%;
+                        position: relative;
+                        @include mq ($from: xsmall, $until: medium) {
+                            margin-bottom: 40px;
+                        }
+                        &:before {
+                            width: 0;
+                            height: 0;
+                            border-top: 10px solid transparent;
+                            border-bottom: 10px solid transparent;
+                            border-right:10px solid $color-active-yellow;
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: -10px;
+                            transform: translateY(-50%);
+                            @include mq ($from: xsmall, $until: medium) {
+                                display: none;
+                            }
+                        }
+                        &:after {
+                            @include mq ($from: xsmall, $until: medium) {
+                                width: 0;
+                                height: 0;
+                                border-left: 15px solid transparent;
+                                border-right: 15px solid transparent;
+                                border-top: 25px solid $color-active-yellow;
+                                content: "";
+                                position: absolute;
+                                bottom: -18px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                            }
+                        }
+                    }
+                    .quiz-answers{
+                        flex: 1 0 50%;
+                        ul{
+                            display: flex;
+                            flex-direction: column;
+                            li {
+                                position: relative;
+                                font-size: 0.825em;
+                                line-height: 1.5em;
+                                // &:after, &:before {
+                                // 	left: 99.8%;
+                                // 	top: 50%;
+                                // 	border: solid transparent;
+                                // 	content: " ";
+                                // 	height: 0;
+                                // 	width: 0;
+                                // 	position: absolute;
+                                // 	pointer-events: none;
+                                // }
+                                //
+                                // &:after {
+                                // 	border-color: rgba(255, 255, 255, 0);
+                                // 	border-left-color: #ffffff;
+                                // 	border-width: 10px;
+                                // 	margin-top: -10px;
+                                // }
+                                // &:before {
+                                // 	border-color: rgba(242, 175, 0, 0);
+                                // 	border-left-color: #cccccc;
+                                // 	border-width: 11px;
+                                // 	margin-top: -11px;
+                                // }
+                                &:nth-child(1) {
+                                    label {
+                                        span {
+                                            &:before {
+                                                content: "A. ";
+                                            }
+                                        }
+                                    }
+                                }
+                                &:nth-child(2) {
+                                    label {
+                                        span {
+                                            &:before {
+                                                content: "B. ";
+                                            }
+                                        }
+                                    }
+                                }
+                                &:nth-child(3) {
+                                    label {
+                                        span {
+                                            &:before {
+                                                content: "C. ";
+                                            }
+                                        }
+                                    }
+                                }
+                                &:nth-child(4) {
+                                    label {
+                                        span {
+                                            &:before {
+                                                content: "D. ";
+                                            }
+                                        }
+                                    }
+                                }
+                                &:last-child {
+                                    label {
+                                        margin: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    .sentence-connector-question-container{
+                        background: #f2af00;
+                        color: white;
+                        height: 100%;
+                        border-radius: 15px;
+                        margin-right: 20px;
+                        padding: 0 20px;
+                        font-size: 1.250em;
+                        line-height: 1.4em;
+                        @include mq ($from: xsmall, $until: medium) {
+                            margin-right: 0;;
+                            padding: 40px;
+                        }
+                        span{
+                            padding: 0 40px 0 20px;
+                            display: inline-block;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            @include mq ($from: xsmall, $until: medium) {
+                                padding: 0;
+                                display: initial;
+                                position: initial;
+                            }
+                        }
+                    }
+
+                    label {
+                        border: 1px solid #ccc;
+                        border-radius: 13px;
+                        padding: 20px;
+                        margin: 0 0 10px;
+                        display: block;
+                        position: relative;
+                        @include mq ($from: xsmall, $until: medium) {
+                            margin-bottom: 24px;
+                        }
+                        &:after, &:before {
+                            left: 100%;
+                            top: 50%;
+                            border: solid transparent;
+                            content: " ";
+                            height: 0;
+                            width: 0;
+                            position: absolute;
+                            pointer-events: none;
+                            @include mq ($from: xsmall, $until: medium) {
+                                left: 50%;
+                                top: -26px;
+                            }
+                        }
+
+                        &:after {
+                            border-color: rgba(255, 255, 255, 0);
+                            border-left-color: #ffffff;
+                            border-width: 10px;
+                            margin-top: -10px;
+                            @include mq ($from: xsmall, $until: medium) {
+                                margin-top: 0;
+                                margin-left: -14px;
+                                border-width: 14px;
+                                border-bottom-color: #ffffff;
+                                border-left-color: rgba(255, 255, 255, 0);
+                            }
+                        }
+                        &:before {
+                            border-color: rgba(242, 175, 0, 0);
+                            border-left-color: #cccccc;
+                            border-width: 11px;
+                            margin-top: -11px;
+                            @include mq ($from: xsmall, $until: medium) {
+                                margin-top: 0;
+                                margin-left: -13px;
+                                border-width: 13px;
+                                border-bottom-color: #cccccc;
+                                border-left-color:rgba(242, 175, 0, 0);
+                            }
+                        }
+                        span {
+                            margin-left: 17px;
+                            display: inline-block;
+                            text-indent: -15px;
+                            &:before{
+                                color: $color-active-yellow;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    label:hover {
+                        border: 1px solid #999;
+                        cursor: pointer;
+                        &:before {
+                            border-left-color: #999999;
+                            @include mq ($from: xsmall, $until: medium) {
+                                border-left-color: transparent;
+                                border-bottom-color: #999999;
+                            }
+                        }
+                    }
+
+                    input[type="radio"]:checked+label{
+                        border: 1px solid #f2af00;
+                        &:before {
+                            border-left-color: $color-active-yellow;
+                            @include mq ($from: xsmall, $until: medium) {
+                                border-bottom-color: $color-active-yellow;
+                                border-left-color: #ffffff;
+                            }
+                        }
+                    }
+
+                    input[type="radio"]{
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .response{
+            display: flex;
+            height: inherit;
+            text-align: center;
+            position: absolute;
+            top: 0;
+
+
+            .panel-content-inner {
+                p {
+                    width: 80%;
+                    margin: 0 auto;
+                    color: $color-text-grey;
+                }
+            }
+
+            .cta-submit-container{
+                background-color: transparent;
+                border-top: none;
+            }
+        }
+
+        .done{
+            display: flex;
+            height: inherit;
+            text-align: center;
+
+            .link-list{
+                li{
+                    display:block;
+                    margin-bottom: 8px;
+
+                    @include mq ($from: large) {
+                        padding-left: 50px;
+                        padding-right: 50px;
+                    }
+
+                    a{
+                        // padding-left: 10px;
+                        // padding-right: 10px;
+                    }
+
+                    &:last-child{
+
+                    }
+                }
+            }
+        }
+    }
+
+
+    // QUIZ SPECIFIC STYLES
+    .quiz-app{
+        &.innovation, &.customer, &.winning, &.results, &.integrity {
+            .intro{
+                .background-container{
+                    background-size: cover;
+                    @include mq ($from: large) {
+                        background-image: url(../images/quiz-customer-intro.jpg);
+                    }
+                }
+            }
+
+            .finished{
+                .background-container{
+                    background-size: cover;
+                    background-color: #ffffff;
+                    @include mq ($from: large) {
+                        background-image: url(../images/quiz-customer-finish.jpg);
+                    }
+                }
+            }
+
+
+            .background-container{
+                background-size: contain;
+                background-position: left;
+                background-repeat: no-repeat;
+                background-image: none;
+
+                &.multiple-choice{
+                    .circle{
+                        @include mq ($from: large) {
+                            left: -30%;
+                            border-radius: 50%;
+                            width: 1000px;
+                            height: 1000px;
+                        }
+                    }
+                }
+
+                 &.sentence-drop-down{
+                    .circle{
+                        @include mq ($from: large) {
+                            left: -30%;
+                            border-radius: 50%;
+                            width: 1000px;
+                            height: 1000px;
+                        }
+                    }
+                }
+            }
+
+
+            .intro, .finished{
+                .background-container{
+                    background-size: cover;
+                    background-position: 50%;
+                    background-color: #f2af00;
+
+                    @include mq ($from: large) {
+                        background-color: #fff;
+                    }
+
+                    .circle-container{
+                        position: relative;
+                        height: 100%;
+                        margin-left: 50%;
+
+                    }
+
+                    .circle{
+                        left: -75%;
+                        width: 150%;
+                        // height: 200px;
+                        border-radius: 50%;
+
+                        @include mq ($from: medium) {
+                            left: -60%;
+                            width: 120%;
+                        }
+
+                        @include mq ($from: large) {
+                            left: -325px;
+                            width: 650px;
+                            height: 650px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+
+
+            .response{
+                .background-container {
+                    background-color: #eeeeee;
+                }
+                .background-container{
+                    .circle{
+                        left: -75%;
+                        width: 150%;
+                        // height: 200px;
+                        border-radius: 50%;
+
+                        @include mq ($from: medium) {
+                            left: -60%;
+                            width: 120%;
+                        }
+
+                        @include mq ($from: large) {
+                            left: -50%;
+                            width: 100%;
+                            height: 1000px;
+                            border-radius: 0;
+                        }
+                    }
+                }
+
+            }
+
+
+            .panel-content{
+                &.multiple-choice{
+                    @include mq ($from: large) {
+                        padding-left: 35%;
+                    }
+                }
+                &.sentence-drop-down{
+                    @include mq ($from: large) {
+                        padding-left: 35%;
+                    }
+                }
+            }
+        }
+
+        &.customer{
+            .background-container{
+                &.sentence-drop-down.q2{
+                    background-image: url(../images/quiz-customer-q2-sentence-dropdown.jpg);
+                }
+                &.sentence-drop-down.q4{
+                    background-image: url(../images/quiz-customer-q4-sentence-dropdown.jpg);
+                }
+
+                &.multiple-choice.q5{
+                    background-image: url(../images/quiz-customer-q5-multiple-choice.jpg);
+                }
+            }
+
+        }
+
+
+        &.innovation{
+            .background-container{
+
+                 &.sentence-drop-down.q3{
+                    background-image: url(../images/quiz-innovation-q3-sentence-dropdown.jpg);
+                }
+            }
+        }
+
+        &.integrity{
+            .background-container{
+                &.sentence-drop-down.q4{
+                    background-image: url(../images/quiz-integrity-q4-sentence-dropdown.jpg);
+                }
+            }
+        }
+
+        &.results{
+            .background-container{
+                &.sentence-drop-down.q3{
+                    background-image: url(../images/quiz-results-q3-sentence-dropdown.jpg);
+                }
+            }
+        }
+
+        &.winning{
+            .background-container{
+                &.sentence-drop-down.q1{
+                    background-image: url(../images/quiz-winning-q1-sentence-dropdown.jpg);
+                }
+            }
+        }
+    }
+
+
+    // helpers
+    .img-badge{
+        width: 120px;
+    }
+
+    .correct .correct, .incorrect .incorrect{
+        display: inline-block;
+    }
+
+    .correct .correct{
+        color: green;
+    }
+    .incorrect .incorrect{
+        color: red;
+    }
+
+
+    .switch-toggle{
+        label {
+            outline: 0!important;
+            font-size: .85em;
+            font-weight: 500;
+            top: 2px;
+
+            &:last-child{
+                left: 2px;
+            }
+            &:nth-child(2):nth-last-child(6), &:nth-child(2):nth-last-child(6) ~ label {
+                width: 33%;
+                position: relative;
+                top: 50%;
+                transform: translateY(-48%);
+            }
+            &:nth-child(2):nth-last-child(6) ~ a {
+                width: 35px;
+                position: relative;
+                top: 51%;
+                left: -1px;
+                transform: translateY(-17px);
+                height: 35px;
+                background: #ffffff;
+                @include mq($until: 320px) {
+                    top: 48%;
+                }
+            }
+            &:nth-child(2):nth-last-child(6) {
+                //padding: 0 .5em;
+            }
+            &:nth-child(2):nth-last-child(6) ~ label {
+                left: 3px;
+            }
+        }
+    }
+
+    input[type="radio"] {
+        margin-right: 8px;
+        margin-top: 3px;
+    }
+
+    button[disabled="disabled"] {
+        filter: grayscale(100%);
+        opacity: .8;
+    }
+
+    .question-status-container{
+        position: absolute;
+        // z-index: 1;
+        pointer-events: none;
+    }
+
+    .question-status{
+        //display: inline-block;
+        width: 23px;
+        height: 23px;
+        background: transparent url(../images/icons/icon-correct.png) no-repeat 0 center;
+        background-size: contain;
+        text-indent: -2000px;
+        display: none;
+
+        &.incorrect{
+            background: transparent url(../images/icons/icon-incorrect.png) no-repeat 0 center;
+            background-size: contain;
+        }
+    }
+
+    .quiz-text{
+        width: 100%;
+        display: block;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .quiz-title{
+        margin-bottom: 24px;
+        font-size: 36px;
+        line-height: 42px;
+        color: #666;
+
+        @include mq ($from: large) {
+            font-size: 48px;
+            line-height: 54px;
+        }
+    }
+
+        .cta-yellow-arrow{
+            display: inline-block;
+            width: 47px;
+            height: 47px;
+            background-image: url(../images/icons/icon-yellow-right-arrow.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            background-color: transparent;
+            border: none;
+            // position: absolute;
+            // left: 50%;
+            // bottom: 20%;
+
+            &.cta-submit,&.cta-next{
+                position: absolute;
+                right: 30px;
+                bottom: 30px;
+                z-index: 10;
+                width: 34px;
+                height: 34px;
+            }
+            &.cta-submit {
+                @include mq ($from: xsmall, $until: large) {
+                    display: block;
+                    width: 34px;
+                    height: 34px;
+                    position: relative;
+                    right: 10px;
+                    bottom: 0;
+                    z-index: 10;
+                    margin: auto;
+                    margin-right: 0;
+                }
+            }
+            &.cta-next {
+                @include mq ($from: xsmall, $until: large) {
+                    display: block;
+                    width: 34px;
+                    height: 34px;
+                    position: relative;
+                    right: 10px;
+                    bottom: 0;
+                    z-index: 10;
+                    margin: auto;
+                    margin-right: 0;
+                }
+            }
+
+            &.cta-submit.enable{
+                animation-name: btn-enabled;
+                animation-duration: 1.2s;
+                animation-delay: .2s;
+            }
+
+            @keyframes btn-enabled {
+                0% {transform: scale(1);}
+                30% {transform: scale(2);}
+                100% {transform: scale(1);}
+            }
+        }
+
+        .cta-submit-container {
+            @include mq ($from: xsmall, $until: large) {
+                width: 100%;
+                height: auto;
+                padding: 12px 0;
+                // position: fixed;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                border-top: 1px solid $color-borders;
+                background: #ffffff;
+                z-index: 10;
+            }
+        }
+
+
+    .quiz{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        display: flex;
+        display: -ms-flexbox;
+        @include mq ($from: xsmall, $until: large) {
+            height: calc(100% - 60px);
+            overflow: scroll;
+        }
+
+        .quiz-question{
+            padding-bottom: 0px;
+        }
+
+        .quiz-answers{
+            //padding-bottom: 40px;
+            li{
+                //padding-bottom: 10px;
+            }
+
+            .answer-item{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+    }
+
+    .background-container-wrapper{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .background-container{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background-color: red;
+        z-index: -1;
+        overflow: hidden;
+
+        @include mq ($from: xsmall, $until: large) {
+            background-image: none!important;
+        }
+
+        .circle{
+            width: 100%;
+            height: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            border-radius: 0;
+            top: 50%;
+            left: 0%;
+            transform: translateY(-50%);
+            @include mq ($from: large){
+                transition: .8s;
+            }
+
+        }
+    }
+
+    .panel-content{
+        margin: auto;
+        padding: 10px;
+        height: 100%;
+        position: relative;
+        display: table;
+        @include mq ($until: large){
+            padding: 0;
+        }
+        .table-row{
+            display: table-row;
+        }
+
+        .panel-content-inner-mobile{
+            height: min-content;
+            @include mq ($from: large) {
+                display: none;
+            }
+
+        }
+
+        .panel-content-inner-mobile-image{
+            img{
+                width: 100%;
+                height: auto;
+                margin-bottom: 0;
+            }
+            &.table-cell{
+                display: table-cell;
+
+            }
+        }
+
+        .panel-content-inner{
+            @include mq ($from: xsmall, $until: large) {
+                padding: 50px 20px 40px;
+            }
+            &.table-cell{
+                @include mq ($from: xsmall, $until: medium) {
+
+                }
+                display: table-cell;
+                vertical-align: middle;
+            }
+            &.flex{
+                display: flex;
+                flex-wrap: wrap;
+                vertical-align: middle;
+            }
+        }
+
+        img{
+            margin-bottom: 24px;
+        }
+
+        @include mq ($from: large) {
+            padding: 50px;
+        }
+
+        &.multiple-choice{
+            // background-image: url(../images/quiz-customer-multiple-choice.jpg);
+        }
+    }
+
+    .template-name{
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        color: #aaa;
+        display: none;
+
+    }
+
+    .log{
+        position: absolute;
+        left: 10px;
+        width: 300px;
+        bottom: 20px;
+        color: #aaa;
+        font-size: 14px;
+        line-height: 18px;
+
+        // display: none;
+    }
+
+
+}

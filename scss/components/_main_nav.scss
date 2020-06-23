@@ -1,0 +1,386 @@
+#section-main-nav{
+	position: fixed;
+	width: 100%;
+	max-width: 1600px;
+	z-index: 20;
+	display: none;
+	.container-fluid {
+		@include mq ($from: xsmall, $until: medium) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	.btn-back-to-grid {
+		display: none;
+	}
+	@include mq ($from: medium) {
+		.mobile-nav-header {
+			display: none;
+		}
+	}
+	@include mq ($from: xsmall, $until: medium) {
+		background-color: #ffffff;
+		&.mobile-article-nav {
+			padding: 12px 0 10px 18px;
+			background: $color-active-yellow;
+			.btn-burger {
+				span {
+					background-color: #ffffff;
+				}
+			}
+			.logo-container {
+				display: none;
+			}
+			.btn-back-to-grid {
+				width: 15px;
+				margin-top: 3px;
+				background: none;
+				border: none;
+				display: inline-block;
+				margin-left: 8px;
+				img {
+					width: 100%;
+				}
+			}
+
+			.mobile-nav-header{
+				display: inline-block;
+			}
+		}
+		.mobile-nav-header {
+			//width: 95%;
+			text-align: center;
+			color: #ffffff;
+			font-weight: $font-weight-medium;
+			font-size: 0.938em;
+			display: none;
+			position: absolute;
+		    left: 20%;
+		    right: 20%;
+		    top: 50%;
+		    transform: translateY(-50%);
+
+		}
+	}
+
+
+	.btn-burger {
+		width: 30px;
+		height: 30px;
+        color: #ffffff;
+        font-size: 27px;
+        position: absolute;
+        right: 20px;
+		top: 50%;
+     	transform: perspective(1px) translateY(-50%);
+		z-index: 2;
+		@include mq ($from: xsmall, $until: medium) {
+			// width: 20px;
+			// height: 20px;
+		}
+		&.open {
+			span{
+				background-color: #ffffff;
+				&:nth-child(1) {
+				  top: 18px;
+				  width: 0%;
+				  left: 50%;
+				}
+				&:nth-child(2) {
+				  -webkit-transform: rotate(45deg);
+				  -moz-transform: rotate(45deg);
+				  -o-transform: rotate(45deg);
+				  transform: rotate(45deg);
+				}
+				&:nth-child(3) {
+				  -webkit-transform: rotate(-45deg);
+				  -moz-transform: rotate(-45deg);
+				  -o-transform: rotate(-45deg);
+				  transform: rotate(-45deg);
+				}
+				&:nth-child(4) {
+				  top: 18px;
+				  width: 0%;
+				  left: 50%;
+				}
+			}
+		}
+        span {
+            width: 30px;
+            height: 3px;
+            margin: 5px 0;
+			position: absolute;
+            display: block;
+            background-color: #fff;
+			transform: rotate(0deg);
+			transition: .25s ease-in-out;
+			&:nth-child(1) {
+			  top: 0px;
+			}
+			&:nth-child(2), &:nth-child(3) {
+			  top: 10px;
+			}
+			&:nth-child(4) {
+			  top: 20px;
+			}
+
+			@include mq ($from: xsmall, $until: medium) {
+				width: 20px;
+	            height: 2px;
+				right: 0;
+				background-color: $color-text-grey;
+				&:nth-child(1) {
+				  top: 0px;
+				}
+				&:nth-child(2), &:nth-child(3) {
+				  top: 5px;
+				}
+				&:nth-child(4) {
+				  top: 10px;
+				}
+			}
+        }
+    }
+
+	.main-nav-container {
+		@include mq ($from: xsmall, $until: medium) {
+			width: 100%;
+			height: initial;
+			//position: fixed;
+			top: -12px;
+			right: 0;
+		}
+		width: 660px;
+		// height: 1000px;
+		height: 100vh;
+		position: absolute;
+		top: 0;
+		right: -10px;
+		display: block;
+		overflow: hidden;
+		pointer-events: none;
+		#main-nav{
+			@include mq ($from: xsmall, $until: medium) {
+				width: 100%;
+			}
+			width: 660px;
+			//height: 100%;
+		    //padding-top: 60px;
+			//max-height: 100%;
+		    position: absolute;
+		    top: 0;
+		    right: -660px;
+		    transition: 0.5s;
+		    background: #000000;
+		    z-index: 1;
+			display: flex;
+			justify-content: flex-start;
+			pointer-events: all;
+			&.sliding {
+				right: -200px;
+				position: relative;
+				@include mq ($from: xsmall, $until: medium) {
+					padding-bottom: 60px;
+					right: 0;
+					position: fixed;
+					overflow: visible;
+				}
+			}
+			&.sliding-lang {
+				right: 0;
+				.lang-nav{
+					//height: calc(100vh + 120px);
+					display: block;
+				}
+				@include mq ($from: xsmall, $until: medium) {
+					.lang-nav {
+						height: calc(100vh + 20px);
+						padding-bottom: 40px;
+						right: -1px;
+						transition: 0.5s;
+						overflow-y: scroll;
+					}
+				}
+				.nav-triggers {
+					.btn-close-lang {
+						display: block;
+					}
+				}
+			}
+			.nav-triggers {
+				width: 669px;
+				height: 60px;
+				padding: 20px 0 20px 20px;
+				background-color: #000000;
+				position: absolute;
+				z-index: 1;
+				display: flex;
+		  		justify-content: space-between;
+				.btn-close {
+					width: 30px;
+					padding: 0;
+					position: fixed;
+					right: 0;
+					// top: 16px;
+					// right: 20px;
+					color: #ffffff;
+					border: 0;
+					background: none;
+					display: none;
+					@include mq ($from: xsmall, $until: medium) {
+						top: 65%;
+						transform: translateY(-65%);
+						height: 62px;
+					}
+					img {
+						width: 50%;
+					}
+				}
+				.btn-close-lang {
+					display: none;
+					background: 0;
+	    			border: 0;
+					img {
+						width: 50%;
+					}
+				}
+			}
+			.nav-items {
+				// position: relative;
+				// right: 0;
+				width: 460px;
+				padding-top: 60px;
+				// &.sliding {
+				// 	right: 480px;
+				// }
+				@include mq ($from: xsmall, $until: medium) {
+					width: 100%;
+				}
+				li {
+					font-size: 1.625em !important;
+					.btn--router, .btn-main-nav {
+						font-weight: 100;
+					    color: #ffffff;
+						&.btn {
+							margin-bottom: 1px;
+							display: flex;
+							direction: ltr;
+							position: relative;
+							background: $color-dark-grey !important;
+							&:hover, &.router-link-active, &.active {
+								background: $color-active-yellow !important;
+							}
+
+						    .thumbnail {
+						        //width: 8.7vh;
+								max-width: 100px;
+								@include mq ($until: small) {
+									max-width: 79px;
+								}
+						        img {
+						            width: 100%;
+									height: 100%;
+									display: block;
+						        }
+						    }
+							span {
+								display: inline-block;
+								position: absolute;
+								top: 50%;
+								// left: 100px;
+								// right: 0;
+								transform: translateY(-50%);
+								text-align: right;
+								font-size: 1.625em;
+
+								width: 100%;
+								padding-left: 100px;
+								left: 0;
+
+								@include mq ($until: small) {
+									margin-left: 15px;
+									left: 0;
+									font-size: 1.063em;
+									text-align: left;
+								}
+							}
+						}
+					}
+				}
+				.lang-tools {
+					height: 60px;
+					background: #282828; /* Old browsers */
+					background: -moz-linear-gradient(top, #282828 0%, #202020 0%, #181818 54%); /* FF3.6-15 */
+					background: -webkit-linear-gradient(top, #282828 0%,#202020 0%,#181818 54%); /* Chrome10-25,Safari5.1-6 */
+					background: linear-gradient(to bottom, #282828 0%,#202020 0%,#181818 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282828', endColorstr='#181818',GradientType=0 ); /* IE6-9 */
+					font-weight: bold;
+					position: relative;
+					a {
+						// width: 100%;
+						padding-right: 20px;
+						color: $color-lighter-grey;
+						text-decoration: none;
+						display: inline-block;
+						position: relative;
+						top: 50%;
+						left: 50%;
+						// right:0%;
+						transform: translate(-50%, -50%);
+						font-size: .725em;
+						font-weight: 200;
+						text-align: center;
+						background: transparent url(../images/icons/icon-btn-arrow-lang-on.png) no-repeat right center;
+						background-size: 3.5%;
+					}
+				}
+			}
+			.lang-nav {
+				@include mq ($from: xsmall, $until: medium) {
+					width: 100%;
+					right: -100%;
+					position: absolute;
+					display: block;
+					transition: 0.5s;
+				}
+				width: 267px;
+				height: 926px;
+				margin: 1px;
+				padding: 100px 25px 0;
+				background: $color-darker-grey;
+				position: relative;
+				display: none;
+
+
+
+
+				//right: 247px;
+				li {
+					margin-bottom: 13px;
+					a {
+						color: #cccccc;
+						&:hover {
+							color: $color-active-yellow;
+						}
+					}
+				}
+				span {
+					margin-bottom: 20px;
+					color: #cccccc;
+					display: inline-block;
+				}
+			}
+			.nav-scroll-container {
+				height: calc(100vh - 1px);
+				overflow-y: scroll;
+				overflow-x: hidden;
+				display: flex;
+				@include mq ($from: xsmall, $until: medium) {
+					width: 100%;
+					height: calc(100vh - 60px);
+					padding-bottom: 60px;
+				}
+			}
+		}
+	}
+}

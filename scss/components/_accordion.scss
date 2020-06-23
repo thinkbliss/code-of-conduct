@@ -1,0 +1,36 @@
+// _accordion.scss
+
+.accordion-wrapper {
+    &.activated {
+        h2 {
+            font-size: 1.250em;
+            line-height: 1.4em;
+            background: transparent url(../images/icons/icon-arrow-accordion-off.png) no-repeat right center;
+            background-size: 5%;
+            @include mq ($from: xsmall, $until: medium) {
+                width: 88%;
+                padding-right: 26px;
+                background-position: right 10px;
+            }
+            &.on {
+                background: transparent url(../images/icons/icon-arrow-accordion-on.png) no-repeat right center;
+                background-size: 5%;
+                @include mq ($from: xsmall, $until: medium) {
+                    background-position: right 10px;
+                }
+
+            }
+        }
+        .accordion-item {
+            padding: 20px 0 0;
+            border-top: 1px solid #dddddd;
+            cursor: pointer;
+            .accordion-content {
+                display: none;
+                &.open {
+                    //display: block;
+                }
+            }
+        }
+    }
+}

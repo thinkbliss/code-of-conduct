@@ -1,0 +1,18 @@
+// _index.scss
+
+/* index */
+
+
+.innovation-content{
+	.header-text-container{
+		background-image: url(../images/innovation-landing-background.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+
+
+		@include mq ($from: medium) {
+			background: transparent;
+		}
+
+	}
+}

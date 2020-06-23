@@ -1,0 +1,41 @@
+// _variables.scss
+
+$breakpoints: (
+  xsmall: 20em,   //  320px
+  midsmall: 30em, //  375px
+  small: 40em,    //  640px
+  medium: 48em,   //  768px
+  large: 61.25em, //  980px
+  xlarge: 80em,   // 1280px
+  xxlarge: 100em  // 1600px
+) !default;
+$mq-media-type: screen;
+$mq-breakpoints: $breakpoints;
+
+
+
+$color-blue-dell: #007db8;
+$color-blue-dell-hover: #034c6e;
+
+$color-gray-border: #aaaaaa;
+
+
+$color-aqua: #1bc8ed;
+$color-sunbeam: #FFD220;
+$color-midnight: #034C6E;
+
+$color-active-yellow: #f2af00;
+$color-dark-grey: #202020;
+$color-darker-grey: #181818;
+$color-medium-grey: #1a1a1a;
+$color-lighter-grey: #a5a5a5;
+$color-text-grey: #555;
+$color-borders: #e4e4e4;
+
+$font-weight-thin: 200;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+
+$grid-min-height: 640px;
